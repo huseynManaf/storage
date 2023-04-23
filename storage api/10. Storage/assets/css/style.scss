@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$main_color: #b92b27;
+$second_color: #1565C0;
+$padding: 10px 40px; 
+
+// gulp
+@import '_media.scss';
+@import '_static.scss';
+@import '_contact.scss';
+
+// .demo{
+//     background-color: red;
+//     border-radius: 20px;
+//     text-align: center;
+//     padding: 50px 0;
+// }
+
+
+// .demo h1{
+//     color: #fff;
+// }
+
+// .demo p{
+//     text-decoration: underline;
+// }
+
+// .demo button {
+//     padding: 13px 60px;
+//     background-color: orange;
+// }
+
+// .demo button:hover{
+//     background-color: green;
+// }
+
+
+// NESTING
+
+
+// .common-btn{
+//     padding: 13px 60px;
+//     border-radius: 5px;
+//     font-size: 16px;
+//     font-weight: bold;
+// }
+
+
+@mixin common-btn($radius,$size) {
+    padding: 13px 60px;
+    border-radius: $radius;
+    font-size: $size;
+    font-weight: bold;
+}
+
+.common-btn-hover{
+    &:hover{
+        border: 2px solid black;
+    }
+}
+
+.demo{
+    background-color: $main_color;
+    padding: 70px 0;
+    text-align: center;
+    
+    .first {
+        &:hover{
+            span{
+                color: yellow;
+            }
+        }
+    }
+
+    .second{
+        color: #fff;
+    }
+    p{
+        text-decoration: underline;
+    }
+    button{
+        background-color: $second_color;
+        // @extend .common-btn;
+        @include common-btn(10px,16px);
+    }
+}
+
+.demo2 {
+    button{
+        background-color: green;
+        transition: 1s;
+        // @extend .common-btn;  
+        @include common-btn(20px,25px);     
+    }
+}
+
+
+// @for $i from 1 through $columns {
+//     .columns-#{$i} {
+//         width: (100% / $i);
+//     }
+// }
+
+
+@for $i from 1 through 12 {
+    .column-#{$i} {
+        width: (100% / $i);
+    }
+}
+
+
+@for $i from 1 through 100 {
+    .size-#{$i} {
+        font-size: #{$i} + px;
+    }
+}
+
+
+@for $i from 1 through 10 {
+    .br-#{$i*5} {
+        border-radius: ($i*5) + px;
+    }
+}
